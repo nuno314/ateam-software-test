@@ -29,6 +29,7 @@ class _ExploreScreenState extends State<ExploreScreen> {
           backgroundColor: ThemeColor.scaffold,
           body: SafeArea(
             child: SingleChildScrollView(
+              padding: EdgeInsets.zero,
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -44,6 +45,7 @@ class _ExploreScreenState extends State<ExploreScreen> {
                         prefixIcon: Assets.images.svg.icSearch.svg(),
                         readOnly: true,
                         hintText: 'Search articles, city, location',
+                        suffixIcon: Assets.images.svg.icFilter.svg(),
                       ),
                     ),
                   ),
@@ -180,7 +182,7 @@ class _ExploreScreenState extends State<ExploreScreen> {
   }) {
     return Container(
       width: 182.w,
-      margin: EdgeInsets.all(16.h),
+      margin: EdgeInsets.symmetric(vertical: 8.h),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(10.r),
         boxShadow: [

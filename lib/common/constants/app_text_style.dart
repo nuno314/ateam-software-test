@@ -22,6 +22,13 @@ class AppTextStyle {
     color: ThemeColor.white,
   );
 
+  static TextStyle textSemibold24px = TextStyle(
+    fontWeight: FontWeight.w600,
+    fontSize: 24.sp,
+    color: ThemeColor.color1a1e25,
+    letterSpacing: 0.013,
+  );
+
   static TextStyle textSemibold18px = TextStyle(
     fontWeight: FontWeight.w600,
     fontSize: 18.sp,
@@ -32,6 +39,12 @@ class AppTextStyle {
     fontWeight: FontWeight.w500,
     fontSize: 16.sp,
     color: ThemeColor.color1a1e25,
+  );
+
+   static TextStyle textRegular16px = TextStyle(
+    fontWeight: FontWeight.w400,
+    fontSize: 16.sp,
+    color: ThemeColor.color7D7F88,
   );
 
   static TextStyle textRegular13px = TextStyle(

@@ -1,6 +1,7 @@
 import 'package:ateam_software_test/common/constants/app_gradient.dart';
 import 'package:ateam_software_test/gen/assets.gen.dart';
 import 'package:ateam_software_test/presentation/extensions/space_extension.dart';
+import 'package:ateam_software_test/presentation/theme/theme_color.dart';
 import 'package:ateam_software_test/presentation/widgets/app_text_field.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -42,25 +43,24 @@ class _ChatScreenState extends State<ChatScreen> {
           body = const SizedBox.shrink();
         }
 
-        return Scaffold(appBar: _buildSearchAppBar(context), body: body);
+        return SafeArea(
+          child: Scaffold(
+            body: Column(
+              children: [
+                Container(
+                  margin: EdgeInsets.all(16.r),
+                  child: AppTextField(
+                    hintText: 'Search messages',
+                    prefixIcon: Assets.images.svg.icSearch.svg(),
+                  ),
+                ),
+                Expanded(child: body),
+              ],
+            ),
+            backgroundColor: ThemeColor.scaffold,
+          ),
+        );
       },
-    );
-  }
-
-  PreferredSizeWidget _buildSearchAppBar(BuildContext context) {
-    return AppBar(
-      backgroundColor: Colors.white,
-      elevation: 0,
-      titleSpacing: 0,
-      leadingWidth: 0,
-      leading: const SizedBox.shrink(),
-      title: Container(
-        margin: EdgeInsets.symmetric(horizontal: 16.w),
-        child: AppTextField(
-          hintText: 'Search messages',
-          prefixIcon: Assets.images.svg.icSearch.svg(),
-        ),
-      ),
     );
   }
 }

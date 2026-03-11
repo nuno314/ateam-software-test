@@ -141,6 +141,12 @@ class _AppTextFieldState extends State<AppTextField> {
                       child: widget.prefixIcon,
                     )
                   : null,
+              suffixIcon: widget.suffixIcon != null
+                  ? Padding(
+                      padding: EdgeInsets.symmetric(horizontal: 16.w),
+                      child: widget.suffixIcon,
+                    )
+                  : null,
               border: InputBorder.none,
               enabledBorder: widget.showBorder
                   ? OutlineInputBorder(

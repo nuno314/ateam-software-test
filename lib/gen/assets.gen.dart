@@ -74,6 +74,9 @@ class $AssetsImagesSvgGen {
   SvgGenImage get icExploreFilled =>
       const SvgGenImage('assets/images/svg/ic_explore_filled.svg');
 
+  /// File path: assets/images/svg/ic_faq.svg
+  SvgGenImage get icFaq => const SvgGenImage('assets/images/svg/ic_faq.svg');
+
   /// File path: assets/images/svg/ic_filter.svg
   SvgGenImage get icFilter =>
       const SvgGenImage('assets/images/svg/ic_filter.svg');
@@ -95,6 +98,10 @@ class $AssetsImagesSvgGen {
   /// File path: assets/images/svg/ic_person.svg
   SvgGenImage get icPerson =>
       const SvgGenImage('assets/images/svg/ic_person.svg');
+
+  /// File path: assets/images/svg/ic_personal.svg
+  SvgGenImage get icPersonal =>
+      const SvgGenImage('assets/images/svg/ic_personal.svg');
 
   /// File path: assets/images/svg/ic_profile.svg
   SvgGenImage get icProfile =>
@@ -122,6 +129,18 @@ class $AssetsImagesSvgGen {
   /// File path: assets/images/svg/ic_sent.svg
   SvgGenImage get icSent => const SvgGenImage('assets/images/svg/ic_sent.svg');
 
+  /// File path: assets/images/svg/ic_settings.svg
+  SvgGenImage get icSettings =>
+      const SvgGenImage('assets/images/svg/ic_settings.svg');
+
+  /// File path: assets/images/svg/ic_switch.svg
+  SvgGenImage get icSwitch =>
+      const SvgGenImage('assets/images/svg/ic_switch.svg');
+
+  /// File path: assets/images/svg/ic_wallet.svg
+  SvgGenImage get icWallet =>
+      const SvgGenImage('assets/images/svg/ic_wallet.svg');
+
   /// List of all assets
   List<SvgGenImage> get values => [
     icApple,
@@ -129,12 +148,14 @@ class $AssetsImagesSvgGen {
     icChatFilled,
     icExplore,
     icExploreFilled,
+    icFaq,
     icFilter,
     icGoogle,
     icHome,
     icHomeFilled,
     icKey,
     icPerson,
+    icPersonal,
     icProfile,
     icProfileFilled,
     icReceived,
@@ -142,6 +163,9 @@ class $AssetsImagesSvgGen {
     icSaveFilled,
     icSearch,
     icSent,
+    icSettings,
+    icSwitch,
+    icWallet,
   ];
 }
 

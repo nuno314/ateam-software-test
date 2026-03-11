@@ -16,7 +16,6 @@ import 'cubit/dashboard_cubit.dart';
 import 'explore/bloc/explore_bloc.dart';
 import 'explore/explore_screen.dart';
 import 'home/bloc/home_page_bloc.dart';
-// dashboard submodules
 import 'home/home_page_screen.dart';
 import 'profile/bloc/profile_bloc.dart';
 import 'profile/profile_interactor.dart';
