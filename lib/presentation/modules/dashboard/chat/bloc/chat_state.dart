@@ -6,7 +6,10 @@ class ChatInitial extends ChatState {}
 
 class ChatLoading extends ChatState {}
 
-class ChatLoaded extends ChatState {}
+class ChatLoaded extends ChatState {
+  final List<ChatItem> items;
+  ChatLoaded(this.items);
+}
 
 class ChatError extends ChatState {
   final String message;
