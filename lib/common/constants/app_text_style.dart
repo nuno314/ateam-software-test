@@ -22,10 +22,22 @@ class AppTextStyle {
     color: ThemeColor.white,
   );
 
+  static TextStyle textSemibold18px = TextStyle(
+    fontWeight: FontWeight.w600,
+    fontSize: 18.sp,
+    color: ThemeColor.color1a1e25,
+  );
+
   static TextStyle textMedium16px = TextStyle(
     fontWeight: FontWeight.w500,
     fontSize: 16.sp,
     color: ThemeColor.color1a1e25,
+  );
+
+  static TextStyle textRegular13px = TextStyle(
+    fontWeight: FontWeight.w400,
+    fontSize: 13.sp,
+    color: ThemeColor.color7D7F88,
   );
 
   static TextStyle caption = TextStyle(

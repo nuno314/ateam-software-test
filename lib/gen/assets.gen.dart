@@ -1,5 +1,3 @@
-// dart format width=80
-
 /// GENERATED CODE - DO NOT MODIFY BY HAND
 /// *****************************************************
 ///  FlutterGen
@@ -7,7 +5,7 @@
 
 // coverage:ignore-file
 // ignore_for_file: type=lint
-// ignore_for_file: deprecated_member_use,directives_ordering,implicit_dynamic_list_literal,unnecessary_import
+// ignore_for_file: directives_ordering,unnecessary_import,implicit_dynamic_list_literal,deprecated_member_use
 
 import 'package:flutter/services.dart';
 import 'package:flutter/widgets.dart';
@@ -44,12 +42,8 @@ class $AssetsImagesPngGen {
       const AssetGenImage('assets/images/png/tokyo-city.jpg');
 
   /// List of all assets
-  List<AssetGenImage> get values => [
-    imgBaliIndonesia,
-    newYorkCity,
-    sydneyCity,
-    tokyoCity,
-  ];
+  List<AssetGenImage> get values =>
+      [imgBaliIndonesia, newYorkCity, sydneyCity, tokyoCity];
 }
 
 class $AssetsImagesSvgGen {
@@ -117,29 +111,33 @@ class $AssetsImagesSvgGen {
 
   /// List of all assets
   List<SvgGenImage> get values => [
-    icApple,
-    icChat,
-    icChatFilled,
-    icExplore,
-    icExploreFilled,
-    icFilter,
-    icGoogle,
-    icHome,
-    icHomeFilled,
-    icKey,
-    icPerson,
-    icProfile,
-    icProfileFilled,
-    icSave,
-    icSaveFilled,
-    icSearch,
-  ];
+        icApple,
+        icChat,
+        icChatFilled,
+        icExplore,
+        icExploreFilled,
+        icFilter,
+        icGoogle,
+        icHome,
+        icHomeFilled,
+        icKey,
+        icPerson,
+        icProfile,
+        icProfileFilled,
+        icSave,
+        icSaveFilled,
+        icSearch
+      ];
 }
 
 class Assets {
   const Assets._();
 
+  static const String aEnv = 'assets/.env';
   static const $AssetsImagesGen images = $AssetsImagesGen();
+
+  /// List of all assets
+  static List<String> get values => [aEnv];
 }
 
 class AssetGenImage {
@@ -147,14 +145,12 @@ class AssetGenImage {
     this._assetName, {
     this.size,
     this.flavors = const {},
-    this.animation,
   });
 
   final String _assetName;
 
   final Size? size;
   final Set<String> flavors;
-  final AssetGenImageAnimation? animation;
 
   Image image({
     Key? key,
@@ -209,8 +205,15 @@ class AssetGenImage {
     );
   }
 
-  ImageProvider provider({AssetBundle? bundle, String? package}) {
-    return AssetImage(_assetName, bundle: bundle, package: package);
+  ImageProvider provider({
+    AssetBundle? bundle,
+    String? package,
+  }) {
+    return AssetImage(
+      _assetName,
+      bundle: bundle,
+      package: package,
+    );
   }
 
   String get path => _assetName;
@@ -218,24 +221,18 @@ class AssetGenImage {
   String get keyName => _assetName;
 }
 
-class AssetGenImageAnimation {
-  const AssetGenImageAnimation({
-    required this.isAnimation,
-    required this.duration,
-    required this.frames,
-  });
-
-  final bool isAnimation;
-  final Duration duration;
-  final int frames;
-}
-
 class SvgGenImage {
-  const SvgGenImage(this._assetName, {this.size, this.flavors = const {}})
-    : _isVecFormat = false;
+  const SvgGenImage(
+    this._assetName, {
+    this.size,
+    this.flavors = const {},
+  }) : _isVecFormat = false;
 
-  const SvgGenImage.vec(this._assetName, {this.size, this.flavors = const {}})
-    : _isVecFormat = true;
+  const SvgGenImage.vec(
+    this._assetName, {
+    this.size,
+    this.flavors = const {},
+  }) : _isVecFormat = true;
 
   final String _assetName;
   final Size? size;
@@ -256,7 +253,6 @@ class SvgGenImage {
     String? semanticsLabel,
     bool excludeFromSemantics = false,
     _svg.SvgTheme? theme,
-    _svg.ColorMapper? colorMapper,
     ColorFilter? colorFilter,
     Clip clipBehavior = Clip.hardEdge,
     @deprecated Color? color,
@@ -276,7 +272,6 @@ class SvgGenImage {
         assetBundle: bundle,
         packageName: package,
         theme: theme,
-        colorMapper: colorMapper,
       );
     }
     return _svg.SvgPicture(
@@ -291,8 +286,7 @@ class SvgGenImage {
       placeholderBuilder: placeholderBuilder,
       semanticsLabel: semanticsLabel,
       excludeFromSemantics: excludeFromSemantics,
-      colorFilter:
-          colorFilter ??
+      colorFilter: colorFilter ??
           (color == null ? null : ColorFilter.mode(color, colorBlendMode)),
       clipBehavior: clipBehavior,
       cacheColorFilter: cacheColorFilter,

@@ -1,3 +1,4 @@
+import 'package:ateam_software_test/common/constants/app_gradient.dart';
 import 'package:ateam_software_test/presentation/theme/theme_color.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -167,9 +168,7 @@ class AppButton extends StatefulWidget {
       borderRadius: borderRadius ?? BorderRadius.circular(24.r),
       shape: shape,
       padding: padding ?? EdgeInsets.symmetric(horizontal: 16.w),
-      gradient: LinearGradient(
-        colors: [ThemeColor.color917AFD, ThemeColor.color6246EA],
-      ),
+      gradient: LinearGradient(colors: AppGradient.colors),
       curve: Curves.easeIn,
       child: child,
     );
