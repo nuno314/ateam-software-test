@@ -172,7 +172,7 @@ class _LoginScreenState extends State<LoginScreen> {
 
   void _blocListener(BuildContext context, AuthState state) {
     if (state is LoginSuccessfullyState) {
-      Navigator.pushReplacementNamed(context, '/dashboard');
+      Navigator.pushNamedAndRemoveUntil(context, '/dashboard', (_) => false);
     }
   }
 }
