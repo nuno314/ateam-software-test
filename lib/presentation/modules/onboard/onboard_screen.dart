@@ -1,3 +1,5 @@
+import 'dart:math' as math;
+
 import 'package:ateam_software_test/common/constants/app_radius.dart';
 import 'package:ateam_software_test/common/constants/app_spacing.dart';
 import 'package:ateam_software_test/common/constants/app_text_style.dart';
@@ -25,45 +27,66 @@ class _OnboardScreenState extends State<OnboardScreen> {
   }
 
   Widget _buildBody() {
+    final media = MediaQuery.of(context);
+    final screenH = media.size.height;
+    final carouselHeight = math.min(
+      508.h,
+      (screenH * 0.46).clamp(260.h, 508.h),
+    );
+
     return Container(
       padding: EdgeInsets.fromLTRB(
         AppSpacing.md,
-        MediaQuery.of(context).padding.top + AppSpacing.md,
+        media.padding.top + AppSpacing.md,
         AppSpacing.md,
-        MediaQuery.of(context).padding.bottom + AppSpacing.md,
+        media.padding.bottom + AppSpacing.md,
       ),
       child: SingleChildScrollView(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            Stack(
-              children: [
-                Row(
-                  children: [
-                    _buildCasourelWidget(),
-                    // _buildCasourelWidget(indexes: [2, 1, 3, 0], reverse: true),
-                    // _buildCasourelWidget(indexes: [2, 1, 3, 0]),
-                  ],
-                ),
-                Positioned(
-                  bottom: 0,
-                  height: (508.h - MediaQuery.of(context).padding.top) / 3,
-                  child: Container(
-                    height: 508.h - MediaQuery.of(context).padding.top,
-                    width: 400.w,
-                    decoration: BoxDecoration(
-                      gradient: LinearGradient(
-                        colors: [
-                          ThemeColor.white.withOpacity(0.1),
-                          ThemeColor.white,
-                        ],
-                        begin: Alignment.topCenter,
-                        end: Alignment.bottomCenter,
+            SizedBox(
+              height: carouselHeight,
+              child: Stack(
+                clipBehavior: Clip.hardEdge,
+                children: [
+                  Row(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      _buildCarouselColumn(carouselHeight),
+                      _buildCarouselColumn(
+                        carouselHeight,
+                        indexes: const [2, 1, 3, 0],
+                        reverse: true,
+                      ),
+                      _buildCarouselColumn(
+                        carouselHeight,
+                        indexes: const [2, 1, 3, 0],
+                      ),
+                    ],
+                  ),
+                  Positioned(
+                    left: 0,
+                    right: 0,
+                    bottom: 0,
+                    height: carouselHeight * 0.38,
+                    child: IgnorePointer(
+                      child: Container(
+                        decoration: BoxDecoration(
+                          gradient: LinearGradient(
+                            colors: [
+                              ThemeColor.white.withValues(alpha: 0.1),
+                              ThemeColor.white,
+                            ],
+                            begin: Alignment.topCenter,
+                            end: Alignment.bottomCenter,
+                          ),
+                        ),
                       ),
                     ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
 
             Text(
@@ -104,42 +127,48 @@ class _OnboardScreenState extends State<OnboardScreen> {
     );
   }
 
-  Widget _buildCasourelWidget({
+  Widget _buildCarouselColumn(
+    double carouselHeight, {
     List<int> indexes = const [0, 1, 2, 3],
     bool reverse = false,
   }) {
+    final maxSlot = (carouselHeight - 10.h) / 2;
+    final slot = math.min(220.h, maxSlot);
+
     return Expanded(
       child: CarouselSlider(
         disableGesture: true,
         options: CarouselOptions(
-          height: 508.h - MediaQuery.of(context).padding.top,
+          height: carouselHeight,
+          viewportFraction: 1,
           autoPlay: true,
           scrollDirection: Axis.vertical,
           reverse: reverse,
-          autoPlayAnimationDuration: Duration(seconds: 6),
+          autoPlayAnimationDuration: const Duration(seconds: 6),
           enableInfiniteScroll: true,
-          autoPlayInterval: Duration(seconds: 3),
+          autoPlayInterval: const Duration(seconds: 3),
         ),
         items: indexes.map((i) {
           return Builder(
             builder: (BuildContext context) {
               return Container(
                 width: double.infinity,
-                margin: EdgeInsets.symmetric(horizontal: 5.0),
+                margin: const EdgeInsets.symmetric(horizontal: 5.0),
                 child: Column(
+                  mainAxisSize: MainAxisSize.min,
                   children: [
                     ClipRRect(
                       borderRadius: BorderRadius.circular(AppRadius.sm),
                       child: Assets.images.png.values
                           .elementAt(i)
-                          .image(height: 200, fit: BoxFit.fitHeight),
+                          .image(height: slot, fit: BoxFit.cover),
                     ),
                     10.vSpace,
                     ClipRRect(
                       borderRadius: BorderRadius.circular(AppRadius.sm),
                       child: Assets.images.png.values
                           .elementAt(i)
-                          .image(height: 200, fit: BoxFit.fitHeight),
+                          .image(height: slot, fit: BoxFit.cover),
                     ),
                   ],
                 ),

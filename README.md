@@ -82,6 +82,27 @@ lib/
     └── widgets/
 ```
 
+## Navigation and routing
+
+Named routes are registered in `lib/presentation/routes/router.dart` via `RouteGenerator.generateRoute`. Route tables are split per feature (`OnboardRoute`, `AuthRoute`, `DashboardRoute`).
+
+- **Unknown or missing route name**: resolves to a **Page Not Found** screen instead of a blank page.
+- **Splash → onboarding**: `SplashBloc` decides the first screen (default: onboard).
+- **Onboarding → login**: **Login** uses `Navigator.pushNamed` with `LoginScreen.path`.
+- **Login → home (dashboard)**: after a successful sign-in, `AuthBloc` emits `LoginSuccessfullyState` and the app navigates with `Navigator.pushNamedAndRemoveUntil` to `DashboardScreen.path` (`/dashboard`), clearing the stack.
+
+Sign-in is currently **mocked** in `AuthBloc` (short delay then success) for demo purposes.
+
+## Dependency injection
+
+The app uses **GetIt** (`lib/di/di.dart`) with **Injectable**. Prefer resolving dependencies in **route builders** or root providers (for example `AuthRoute` provides `AuthBloc` via `injector.get()`), so screens stay loosely coupled from the service locator.
+
+After changing injectable registrations, regenerate code:
+
+```bash
+dart run build_runner build --delete-conflicting-outputs
+```
+
 ## Main Dependencies
 
 - **flutter_bloc**: State management
@@ -91,6 +112,8 @@ lib/
 - **flutter_screenutil**: Responsive UI
 - **flutter_svg**: SVG display
 - **retrofit**: API client generation
+
+**Dev:** `bloc_test` (unit tests for blocs)
 
 ## Development
 
@@ -109,10 +132,11 @@ abstract class ApiClient {
 3. If code generation needed: `flutter pub run build_runner build`
 
 ### Testing
-Run tests:
 ```bash
 flutter test
 ```
+
+Included: `test/route_generator_test.dart` (unknown routes / `PageNotFoundScreen`), `test/auth_bloc_test.dart` (`AuthBloc` sign-in), `test/widget_test.dart` (basic pump).
 
 ## Contributing
 

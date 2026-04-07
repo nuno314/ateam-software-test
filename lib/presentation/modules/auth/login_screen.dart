@@ -2,6 +2,7 @@ import 'package:ateam_software_test/common/constants/app_text_style.dart';
 import 'package:ateam_software_test/gen/assets.gen.dart';
 import 'package:ateam_software_test/presentation/extensions/space_extension.dart';
 import 'package:ateam_software_test/presentation/modules/auth/bloc/auth_bloc.dart';
+import 'package:ateam_software_test/presentation/modules/dashboard/dashboard_screen.dart';
 import 'package:ateam_software_test/presentation/theme/theme_color.dart';
 import 'package:ateam_software_test/presentation/widgets/app_button.dart';
 import 'package:ateam_software_test/presentation/widgets/app_text_field.dart';
@@ -172,7 +173,11 @@ class _LoginScreenState extends State<LoginScreen> {
 
   void _blocListener(BuildContext context, AuthState state) {
     if (state is LoginSuccessfullyState) {
-      Navigator.pushNamedAndRemoveUntil(context, '/dashboard', (_) => false);
+      Navigator.pushNamedAndRemoveUntil(
+        context,
+        DashboardScreen.path,
+        (_) => false,
+      );
     }
   }
 }
